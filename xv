@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación XV Años</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', serif;
+            background-color: #f4ebf2;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        h1 {
+            font-size: 3em;
+            color: #8b5b9a;
+        }
+        .highlight {
+            font-size: 2.5em;
+            color: #b58db8;
+            font-style: italic;
+        }
+        .subtitle {
+            margin: 10px 0;
+            font-size: 1.2em;
+            color: #555;
+        }
+        .details {
+            margin: 20px 0;
+            font-size: 1.1em;
+            color: #7a4e80;
+            line-height: 1.6;
+        }
+        .divider {
+            width: 80%;
+            height: 1px;
+            background: #d7a1d4;
+            margin: 20px auto;
+        }
+        .location {
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+        .location a {
+            text-decoration: none;
+            color: #8b5b9a;
+        }
+        .butterfly {
+            width: 100px;
+            opacity: 0.8;
+            position: absolute;
+            animation: float 6s ease-in-out infinite;
+        }
+        .butterfly.left {
+            left: 5%;
+            top: 10%;
+        }
+        .butterfly.right {
+            right: 5%;
+            top: 20%;
+        }
+        .countdown {
+            font-size: 2em;
+            color: #8b5b9a;
+            margin-top: 20px;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mis XV Años</h1>
+        <p class="highlight">Natali</p>
+        <p class="subtitle">Enero 11, 2025</p>
+        <div class="divider"></div>
+        <p class="details">
+            Dejo atrás un mundo y entro a uno nuevo, aunque a veces dudo o temo, estoy llena de esperanzas y sueños.<br>
+            Tengo la sensación de que estoy construyendo mi propio camino alegre y quiero compartirlo rodeada de todos los que quiero.
+        </p>
+        <div class="divider"></div>
+        <p class="details">
+            <strong>Acompáñame a celebrar mis XV años:</strong><br>
+            <span class="location">Ceremonia religiosa: 2:00 PM</span><br>
+            <span class="location">
+                📍 <a href="#">Capilla de Guadalupe, San Baltazar Temaxcalac</a>
+            </span>
+        </p>
+        <div class="divider"></div>
+        <p class="details">
+            <strong>Recepción:</strong><br>
+            <span class="location">4:00 PM</span><br>
+            <span class="location">
+                📍 <a href="#">Salón Social Arisbayo, Calle José Ignacio Allende No. 39, La Ciénega</a>
+            </span>
+        </p>
+        <div class="countdown" id="countdown">Cargando cuenta regresiva...</div>
+    </div>
+    <audio autoplay loop>
+        <source src="musica.mp3" type="audio/mpeg">
+        Tu navegador no soporta la reproducción de audio.
+    </audio>
+    <img src="butterfly.png" alt="Mariposa" class="butterfly left">
+    <img src="butterfly.png" alt="Mariposa" class="butterfly right">
+
+    <script>
+        // Configuración de la cuenta regresiva
+        const targetDate = new Date("2025-01-11T00:00:00").getTime();
+        const countdownElement = document.getElementById("countdown");
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference < 0) {
+                countdownElement.innerHTML = "¡El gran día ha llegado!";
+                return;
+            }
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            countdownElement.innerHTML = `${days} días, ${hours} horas, ${minutes} minutos, ${seconds} segundos`;
+        }
+
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
